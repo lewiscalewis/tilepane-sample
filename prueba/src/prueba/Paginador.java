@@ -15,15 +15,15 @@ public class Paginador extends Application {
 	
 	private Pagination pagination;
     
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception { //se lanza
         launch(args);
     }
  
-    public int itemsPerPage() {
+    public int itemsPerPage() { // define los items que se muestra en cada página del paginador
         return 8;
     }
  
-    public VBox createPage(int pageIndex) {
+    public VBox createPage(int pageIndex) { //crea los items que se ven en la página, Vbox + mensajes con links EL MÉTODO DEBUELVE EL VBOX COMPLETO
         VBox box = new VBox(5);
         int page = pageIndex * itemsPerPage();
         for (int i = page; i < page + itemsPerPage(); i++) {
@@ -37,7 +37,7 @@ public class Paginador extends Application {
         return box;
     }
  
-    public void start(final Stage stage) throws Exception {
+    public void start(final Stage stage) throws Exception { //Se crea la escena y el paginador llamando al método anterior con un callback desde el método PageFactory
         pagination = new Pagination(28, 0);
         pagination.setStyle("-fx-border-color:red;");
         pagination.setPageFactory((Callback<Integer, Node>) new Callback<Integer, Node>() {
